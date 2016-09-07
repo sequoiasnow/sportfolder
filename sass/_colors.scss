@@ -1,0 +1,16 @@
+// Setup colors to randomize the sections based on the color property of the 
+// body class.
+@for $i from 1 through length($background-colors) {
+    body.color-#{$i} {
+        $bg-color: nth($background-colors, $i);
+        $available-colors: remove-nth($background-colors, $i);
+        
+        background-color: $bg-color;
+
+        @for $foo from 1 through length($available-colors) {
+            > section:nth-child(#{$foo}) {
+                background-color: nth($available-colors, $foo);
+            }
+        }
+    }
+}

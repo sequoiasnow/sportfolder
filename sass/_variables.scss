@@ -1,0 +1,15 @@
+/// The background color for the site, it should be noted that this must 
+/// be changed in coordination with the color of the text in some cases.
+$background-colors: (
+    rgb(80 ,80, 80),
+    tomato,
+    orange,
+    aqua,
+    indianred,
+    orchid,
+);
+
+/// Defines the heading sizes in terms of em.
+$large-heading-size: 4em;
+$medium-heading-size: 3em;
+$small-heading-size: 1.8em;

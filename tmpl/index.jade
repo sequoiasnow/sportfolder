@@ -1,0 +1,49 @@
+doctype html
+html
+    title=title
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='main.css')
+    script(src='https://use.fontawesome.com/b2ab8593f9.js')
+body.color-1
+    section#title-section
+        header.center
+            h1=title
+        div.contents
+            include:markdown ../data/title.md
+    section#activities
+        header.right
+            h2=activities.title
+        div.contents 
+            div.center.icon-container
+                each group in activities.groups
+                    article.icon
+                        if group.icon
+                            span(class='fa fa-' + group.icon)
+                        else
+                            img(src='images/' + group.image)
+                        if group.link
+                            a(href=group.link)=group.name
+                        else 
+                            span.name=group.name
+                article.icon
+                    span(class='fa fa-' + activities.arrowIcon)
+                article.icon
+                    span(class='fa fa-' + activities.folderIcon)
+            div
+                include:markdown ../data/activities.md
+
+    section#tennis-folder
+        header.left
+            h2
+                a(href=tennisLink)=tennis.title
+        div.contents
+            include:markdown ../data/tennis.md
+
+    //- Changes the colors for the background of the site and text.
+    script.
+        document.body.className = 'color-' + Math.ceil(Math.random() * 6);
+
+    //- Allows live reload, remove from production.
+    script#live-reload-script.
+        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
+

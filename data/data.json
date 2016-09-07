@@ -1,0 +1,21 @@
+{
+    "title": "SportsFolder",
+    "activities": {
+        "title": "Activities",
+        "groups": [
+            {
+                "icon": "futbol-o",
+                "name": "Soccer"
+            },
+            {
+                "image": "tennis.svg",
+                "name": "Tennis"
+            }
+        ],
+        "arrowIcon": "arrow-right",
+        "folderIcon": "folder-open-o"
+    },
+    "tennis": {
+        "title": "TennisFolder"
+    }
+}
