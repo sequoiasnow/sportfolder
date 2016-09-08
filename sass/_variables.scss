@@ -1,7 +1,7 @@
 /// The background color for the site, it should be noted that this must 
 /// be changed in coordination with the color of the text in some cases.
 $background-colors: (
-    rgb(80 ,80, 80),
+    black,
     tomato,
     orange,
     aqua,
@@ -9,7 +9,48 @@ $background-colors: (
     orchid,
 );
 
+/// Colors to be shown in the title
+$title-colors: (
+    tomato,
+    orange,
+    aqua,
+    rgb(80 ,80, 80),
+    white,
+    red,
+    orchid,
+);
+
+/// Color of italicized text.
+$italic-color: rgb(46, 204, 113 );
+
+/// Color of bold text
+$bold-color: rgb(215, 189, 226);
+
+/// Color of underlined text.
+$underline-color: rgb(52, 152, 219);
+
+/// Color of link texts.
+$link-color: rgb(52, 152, 219);
+
 /// Defines the heading sizes in terms of em.
-$large-heading-size: 4em;
-$medium-heading-size: 3em;
-$small-heading-size: 1.8em;
+$large-heading-size: 9em;
+$medium-heading-size: 5em;
+$small-heading-size: 3em;
+
+/// Primary font for use over the site.
+$font: helvetica, avenir, sans-serif;
+
+/// Primary font color used sitewide.
+$text-color: white;
+
+/// Maximum width of content within sections
+$content-max-width: 650px;
+
+/// Maximum width for large content.
+$large-content-max-width: 1060px;
+
+/// Size of the icon in the article containers.
+$icon-size: 160px;
+
+/// Opacity [0...1] of the background of any section that has an image.
+$has-image-opacity: 0.4;

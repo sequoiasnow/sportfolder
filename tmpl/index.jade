@@ -4,10 +4,17 @@ html
     meta(charset='utf-8')
     link(rel='stylesheet', href='main.css')
     script(src='https://use.fontawesome.com/b2ab8593f9.js')
-body.color-1
-    section#title-section
-        header.center
-            h1=title
+
+    //- create the background images for various sections.
+    if images.title
+        style.
+            #title-section::before { background-image: url(images/#{images.title}); }
+body
+    section#title-section.has-image
+        header.center 
+            h1
+                each char in title.split('')
+                    span=char
         div.contents
             include:markdown ../data/title.md
     section#activities
@@ -29,7 +36,7 @@ body.color-1
                     span(class='fa fa-' + activities.arrowIcon)
                 article.icon
                     span(class='fa fa-' + activities.folderIcon)
-            div
+            div.text-content
                 include:markdown ../data/activities.md
 
     section#tennis-folder
@@ -38,10 +45,6 @@ body.color-1
                 a(href=tennisLink)=tennis.title
         div.contents
             include:markdown ../data/tennis.md
-
-    //- Changes the colors for the background of the site and text.
-    script.
-        document.body.className = 'color-' + Math.ceil(Math.random() * 6);
 
     //- Allows live reload, remove from production.
     script#live-reload-script.

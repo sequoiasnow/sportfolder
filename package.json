@@ -4,11 +4,12 @@
   "description": "The Sports",
   "main": "static/index.html",
   "scripts": {
-    "build:css": "node-sass --scss sass/main.scss | postcss -u autoprefixer --autoprefixer.browsers \"> 0.1%\" > static/main.css",
+    "prebuild:css": "node-sass sass/main.scss static/main.css",
+    "build:css": "postcss -u autoprefixer --autoprefixer.browsers \"> 0.1%\" -o static/main.css static/main.css",
     "build:html": "jade --obj data/data.json tmpl/index.jade -o static",
     "build": "parallelshell -v 'npm run build:css' 'npm run build:html'",
-    "watch:css": "node-sass --scss --watch sass:static",
-    "watch:html": "jade --obj data/data.json -w tmpl tmpl/index.jade -o static",
+    "watch:css": "node-sass --watch sass -o static",
+    "watch:html": "watch 'npm run build:html' tmpl data",
     "watch": "parallelshell -v 'npm run watch:css' 'npm run watch:html'",
     "serve": "parallelshell 'node server.js' 'livereload static'",
     "dev": "npm run build && parallelshell -v 'npm run watch' 'npm run serve'"
@@ -18,12 +19,13 @@
   "devDependencies": {
     "autoprefixer": "^6.4.1",
     "jade": "^1.11.0",
+    "jstransformer-markdown": "^1.1.0",
     "livereload": "^0.5.0",
     "marked": "^0.3.6",
     "node-sass": "^3.9.3",
     "parallelshell": "^2.0.0",
     "postcss-cli": "^2.6.0",
-    "jstransformer-markdown": "^1.1.0"
+    "watch": "^0.19.2"
   },
   "dependencies": {
     "express": "^4.14.0"

@@ -1,16 +1,48 @@
-// Setup colors to randomize the sections based on the color property of the 
-// body class.
-@for $i from 1 through length($background-colors) {
-    body.color-#{$i} {
-        $bg-color: nth($background-colors, $i);
-        $available-colors: remove-nth($background-colors, $i);
-        
-        background-color: $bg-color;
+body { 
+    background-color: nth($background-colors, 1);
+}
 
-        @for $foo from 1 through length($available-colors) {
-            > section:nth-child(#{$foo}) {
-                background-color: nth($available-colors, $foo);
-            }
-        }
+// Sets up the sections with colors.
+@for $i from 1 through length($background-colors) {
+    body > section:nth-child(#{$i}) {
+        background-color: nth($background-colors, $i);
     }
 }
+
+// Sets up the title to be multicolored.
+// - the 25 is simply a estimate, if the title is longer, update this number.
+$i: 1;
+@for $foo from 1 through 20 {
+    @if $i > (length($title-colors) - 1) {
+        $i: 1;
+    } @else {
+        $i: $i + 1;
+    }
+
+    #title-section header h1 > span:nth-child(#{$foo}) {
+        color: nth($title-colors, $i);
+    } 
+}
+
+// Set the exaggeration of the bold and italic text elements.
+i, em {
+    font-style: italic;
+    color: $italic-color;
+}
+
+b, strong {
+    font-style: bold;
+    color: $bold-color;
+}
+
+u {
+    text-decoration: underline;
+    color: $underline-color;
+}
+
+a {
+    text-decoration: none;
+    font-style: bold;
+    color: $link-color;
+}
+

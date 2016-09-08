@@ -1,5 +1,8 @@
 {
-    "title": "SportsFolder",
+    "images": {
+        "title": "sports-equipment.jpg"
+    },
+    "title": "SportFolder",
     "activities": {
         "title": "Activities",
         "groups": [
@@ -9,7 +12,8 @@
             },
             {
                 "image": "tennis.svg",
-                "name": "Tennis"
+                "name": "Tennis",
+                "link": "http://tennisfolder.com"
             }
         ],
         "arrowIcon": "arrow-right",
