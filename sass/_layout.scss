@@ -6,6 +6,11 @@ body {
     color: $text-color;
 }
 
+// Default behavior is border box;
+* {
+  box-sizing: border-box;
+}
+
 // Allow sections to display in row using flexbox.
 body {
     display: flex;
@@ -13,12 +18,12 @@ body {
     justify-content: flex-start;
 }
 
-// Remove section margins that are primary containers. Ensure the 
+// Remove section margins that are primary containers. Ensure the
 // contents of a section can not become to large as well.
 body > section {
     margin: 0;
     width: 100%;
-    max-width: 100vw;
+    max-width: 100%;
     box-sizing: border-box;
     padding: 20px;
 
@@ -40,6 +45,9 @@ body > section {
 // Special consideration goes to the title which is much larger.
 #title-section header {
     width: $large-content-max-width;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 // Create sections that can have background images.
@@ -57,7 +65,7 @@ section.has-image::before {
     background-size: 50%;
 }
 
-// Change the background color of the 
+// Change the background color of the
 section.has-image {
     background-color: rgba(0, 0, 0, $has-image-opacity) !important;
 }
@@ -75,6 +83,7 @@ section.has-image {
 }
 
 #activities .contents .text-content {
+    max-width: 95vw;
     width: $content-max-width;
     margin-left: auto;
     margin-right: auto;
@@ -103,7 +112,14 @@ section.has-image {
         margin-left: 85px;
 
         .fa { font-size: $icon-size / 2; }
-    } 
+
+        // Only, however on large screens.
+        @media (max-width: #{$icon-size * 3}) {
+            margin-left: 30px;
+            font-size: $icon-size;
+            transform: rotate(90deg);
+        }
+    }
 
     .fa {
         font-size: $icon-size;
@@ -117,8 +133,7 @@ section.has-image {
         // Only for black images to make them white.
         filter: invert(100%);
     }
-
-} 
+}
 
 
 // Titles should show as large and bold.
@@ -126,3 +141,8 @@ header h1 { font-size: $large-heading-size; }
 header h2 { font-size: $medium-heading-size; }
 header h3 { font-size: $small-heading-size; }
 
+@media (max-width: 600px) {
+  header h1 { font-size: $large-heading-size / 4; }
+  header h2 { font-size: $medium-heading-size / 3; }
+  header h3 { font-size: $small-heading-size / 3; }
+}
